@@ -9,12 +9,13 @@ internal class RestaurantsDbContext : DbContext
 
     internal DbSet<Dish> Dishes => Set<Dish>();
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        // A BIG NO-NO! This is just for demo purposes.
-        string connectionString = "Server=(localdb)\\mssqllocaldb;Database=RestaurantsDb;Trusted_Connection=True;MultipleActiveResultSets=true";
-        optionsBuilder.UseSqlServer(connectionString);
-    }
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //    // ***** A BIG NO-NO! This is just for demo purposes. *****
+    //    //string connectionString = "Server=(localdb)\\mssqllocaldb;Database=RestaurantsDb;Trusted_Connection=True;MultipleActiveResultSets=true";
+    //    //optionsBuilder.UseSqlServer(connectionString);
+    //    // ***** A BIG NO-NO! This is just for demo purposes. *****
+    //}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
