@@ -11,6 +11,7 @@ internal class RestaurantsDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        // A BIG NO-NO! This is just for demo purposes.
         string connectionString = "Server=(localdb)\\mssqllocaldb;Database=RestaurantsDb;Trusted_Connection=True;MultipleActiveResultSets=true";
         optionsBuilder.UseSqlServer(connectionString);
     }
@@ -26,5 +27,9 @@ internal class RestaurantsDbContext : DbContext
             .HasMany(r => r.Dishes)
             .WithOne()
             .HasForeignKey(d => d.RestaurantId);
+
+        modelBuilder.Entity<Dish>()
+            .Property(d => d.Price)
+            .HasPrecision(18, 4); // Specify precision and scale
     }
 }
