@@ -1,13 +1,18 @@
-﻿using Restaurants.Domain.Entities;
+﻿using Microsoft.Extensions.Logging;
+using Restaurants.Domain.Entities;
+using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Application.Restaurants;
 
-internal class RestaurantsService
+internal class RestaurantsService(IRestaurantsRepository restaurantsRepository, ILogger<RestaurantsService> logger)
 {
 
     public async Task<IEnumerable<Restaurant>> GetAll()
     {
-        var restaurants = await mediator.Send(query);
+        logger.LogInformation("Getting all restaurants");
+
+        var restaurants = await restaurantsRepository.GetAllAsync();
+
         return restaurants;
     }
 }

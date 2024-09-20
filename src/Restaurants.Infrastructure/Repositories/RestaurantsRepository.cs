@@ -1,4 +1,5 @@
-﻿using Restaurants.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Restaurants.Domain.Entities;
 using Restaurants.Domain.Repositories;
 using Restaurants.Infrastructure.Persistence;
 
@@ -6,8 +7,10 @@ namespace Restaurants.Infrastructure.Repositories;
 
 internal class RestaurantsRepository(RestaurantsDbContext dbContext) : IRestaurantsRepository
 {
-    public Task<IEnumerable<Restaurant>> GetAllAsync()
+    public async Task<IEnumerable<Restaurant>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        var restaurants = await dbContext.Restaurants.ToListAsync();
+
+        return restaurants;
     }
 }
