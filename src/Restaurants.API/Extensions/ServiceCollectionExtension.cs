@@ -1,4 +1,5 @@
 ﻿using Restaurants.Infrastructure.Extensions;
+using Restaurants.Application.Extensions;
 
 namespace Restaurants.API.Extensions;
 
@@ -12,7 +13,10 @@ public static class ServiceCollectionExtension
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
 
+        services.AddApplication();
+
         services.AddInfrastructure(configuration);
+
     }
 
 }
