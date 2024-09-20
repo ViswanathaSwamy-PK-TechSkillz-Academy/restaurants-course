@@ -18,6 +18,5 @@ D:\TSA\restaurants-course\src\Restaurants.Infrastructure
 dotnet ef migrations add InitialCreate --project . --startup-project . --context RestaurantsDbContext
 
 # Update database for RestaurantsDbContext
-dotnet ef database update --context LMSIdentityDbContext
-
+dotnet ef database update --context RestaurantsDbContext
 ```

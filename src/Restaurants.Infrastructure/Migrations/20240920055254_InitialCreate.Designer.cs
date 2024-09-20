@@ -12,7 +12,7 @@ using Restaurants.Infrastructure.Persistence;
 namespace Restaurants.Infrastructure.Migrations
 {
     [DbContext(typeof(RestaurantsDbContext))]
-    [Migration("20240920054225_InitialCreate")]
+    [Migration("20240920055254_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -128,8 +128,7 @@ namespace Restaurants.Infrastructure.Migrations
                                 .HasForeignKey("RestaurantId");
                         });
 
-                    b.Navigation("Address")
-                        .IsRequired();
+                    b.Navigation("Address");
                 });
 
             modelBuilder.Entity("Restaurants.Domain.Entities.Restaurant", b =>

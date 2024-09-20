@@ -125,8 +125,7 @@ namespace Restaurants.Infrastructure.Migrations
                                 .HasForeignKey("RestaurantId");
                         });
 
-                    b.Navigation("Address")
-                        .IsRequired();
+                    b.Navigation("Address");
                 });
 
             modelBuilder.Entity("Restaurants.Domain.Entities.Restaurant", b =>
