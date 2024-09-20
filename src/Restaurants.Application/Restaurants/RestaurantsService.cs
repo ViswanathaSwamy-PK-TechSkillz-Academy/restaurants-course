@@ -30,15 +30,17 @@ internal class RestaurantsService(IRestaurantsRepository restaurantsRepository, 
         // Method 2
         var restaurantsDto = restaurants.Select(RestaurantDto.FromEntity);
 
-        return restaurantsDto;
+        return restaurantsDto!; // It will not be null. It might be empty collection.
     }
 
     public async Task<RestaurantDto?> GetById(int id)
     {
-        logger.LogInformation($"Getting restaurant by {id}");
+        logger.LogInformation("Getting restaurant by {id}", id);
 
         var restaurant = await restaurantsRepository.GetByIdAsync(id);
 
-        return restaurant;
+        var restaurantDto = restaurant == null ? null : RestaurantDto.FromEntity(restaurant);
+
+        return restaurantDto;
     }
 }
