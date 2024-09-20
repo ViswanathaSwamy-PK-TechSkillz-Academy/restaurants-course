@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurants.Infrastructure"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BB55DC3A-C8B4-4316-A059-8A22BB2D4D47}"
 	ProjectSection(SolutionItems) = preProject
-		Notes.txt = Notes.txt
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
