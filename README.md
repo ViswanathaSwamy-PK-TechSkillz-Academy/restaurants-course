@@ -15,7 +15,6 @@ dotnet tool update --global dotnet-ef
 D:\TSA\restaurants-course\src\Restaurants.Infrastructure
 
 # Add migration for RestaurantsDbContext
-dotnet ef migrations add InitialCreate --context RestaurantsDbContext --project . --startup-project . 
 dotnet ef migrations add InitialCreate --context RestaurantsDbContext --project . --startup-project ..\Restaurants.API
 
 # Update database for RestaurantsDbContext
