@@ -1,5 +1,5 @@
-﻿using Restaurants.Infrastructure.Extensions;
-using Restaurants.Application.Extensions;
+﻿using Restaurants.Application.Extensions;
+using Restaurants.Infrastructure.Extensions;
 
 namespace Restaurants.API.Extensions;
 

@@ -1,17 +1,18 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Restaurants.Application.Restaurants;
 
 namespace Restaurants.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class RestaurantsController : ControllerBase
+public class RestaurantsController(IRestaurantsService restaurantsService) : ControllerBase
 {
     [HttpGet]
     [AllowAnonymous]
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll()
     {
-        var restaurants = await mediator.Send(query);
+        var restaurants = await restaurantsService.GetAll();
 
         return Ok(restaurants);
     }
