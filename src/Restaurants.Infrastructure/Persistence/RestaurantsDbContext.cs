@@ -11,7 +11,20 @@ internal class RestaurantsDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        string connectionString = "Server=localhost;Database=RestaurantsDb;Trusted_Connection=True;";
+        string connectionString = "Server=(localdb)\\mssqllocaldb;Database=RestaurantsDb;Trusted_Connection=True;MultipleActiveResultSets=true";
         optionsBuilder.UseSqlServer(connectionString);
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Restaurant>()
+            .OwnsOne(r => r.Address);
+
+        modelBuilder.Entity<Restaurant>()
+            .HasMany(r => r.Dishes)
+            .WithOne()
+            .HasForeignKey(d => d.RestaurantId);
     }
 }
