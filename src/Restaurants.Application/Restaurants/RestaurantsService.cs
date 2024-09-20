@@ -14,7 +14,23 @@ internal class RestaurantsService(IRestaurantsRepository restaurantsRepository, 
 
         var restaurants = await restaurantsRepository.GetAllAsync();
 
-        return restaurants;
+        // Method 1
+        //var restaurantsDto = restaurants.Select(restaurant => new RestaurantDto
+        //{
+        //    Id = restaurant.Id,
+        //    Name = restaurant.Name,
+        //    Description = restaurant.Description,
+        //    Category = restaurant.Category,
+        //    HasDelivery = restaurant.HasDelivery,
+        //    City = restaurant.Address?.City,
+        //    Street = restaurant.Address?.Street,
+        //    PostalCode = restaurant.Address?.PostalCode,
+        //});
+
+        // Method 2
+        var restaurantsDto = restaurants.Select(RestaurantDto.FromEntity);
+
+        return restaurantsDto;
     }
 
     public async Task<RestaurantDto?> GetById(int id)

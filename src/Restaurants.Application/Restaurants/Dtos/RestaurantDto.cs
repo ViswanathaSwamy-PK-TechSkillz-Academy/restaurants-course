@@ -15,11 +15,33 @@ public class RestaurantDto
 
     public bool HasDelivery { get; set; }
 
-    public string City { get; set; } = "Some City";
+    public string? City { get; set; }
 
-    public string Street { get; set; } = "Some Street";
+    public string? Street { get; set; }
 
-    public string PostalCode { get; set; } = "10001";
+    public string? PostalCode { get; set; }
 
     public List<DishDto> Dishes { get; set; } = [];
+
+    public static RestaurantDto FromEntity(Restaurant restaurant)
+    {
+        return new RestaurantDto
+        {
+            Id = restaurant.Id,
+
+            Name = restaurant.Name,
+
+            Description = restaurant.Description,
+
+            Category = restaurant.Category,
+
+            HasDelivery = restaurant.HasDelivery,
+
+            City = restaurant.Address?.City,
+
+            Street = restaurant.Address?.Street,
+
+            PostalCode = restaurant.Address?.PostalCode,
+        };
+    }
 }
