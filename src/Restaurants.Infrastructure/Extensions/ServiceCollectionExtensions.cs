@@ -10,8 +10,10 @@ public static class ServiceCollectionExtensions
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         string? connectionString = configuration.GetConnectionString("RestaurantsDbConnection");
-        services.AddDbContext<RestaurantsDbContext>(options => options.UseSqlServer(connectionString)
-        .EnableSensitiveDataLogging());
+        services.AddDbContext<RestaurantsDbContext>(options =>
+            {
+                options.UseSqlServer(connectionString).EnableSensitiveDataLogging();
+            });
     }
 
 }
