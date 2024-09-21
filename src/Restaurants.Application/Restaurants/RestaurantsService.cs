@@ -15,25 +15,6 @@ internal class RestaurantsService(IRestaurantsRepository restaurantsRepository,
 
         var restaurants = await restaurantsRepository.GetAllAsync();
 
-        #region Method 1 and 2
-        // Method 1
-        //var restaurantsDto = restaurants.Select(restaurant => new RestaurantDto
-        //{
-        //    Id = restaurant.Id,
-        //    Name = restaurant.Name,
-        //    Description = restaurant.Description,
-        //    Category = restaurant.Category,
-        //    HasDelivery = restaurant.HasDelivery,
-        //    City = restaurant.Address?.City,
-        //    Street = restaurant.Address?.Street,
-        //    PostalCode = restaurant.Address?.PostalCode,
-        //});
-
-        // Method 2
-        //var restaurantsDto = restaurants.Select(RestaurantDto.FromEntity);
-        #region
-
-        // Method 3
         var restaurantsDto = mapper.Map<IEnumerable<RestaurantDto>>(restaurants);
 
         return restaurantsDto!; // It will not be null. It might be empty collection.
@@ -45,8 +26,30 @@ internal class RestaurantsService(IRestaurantsRepository restaurantsRepository,
 
         var restaurant = await restaurantsRepository.GetByIdAsync(id);
 
-        var restaurantDto = restaurant == null ? null : RestaurantDto.FromEntity(restaurant);
+        var restaurantDto = mapper.Map<RestaurantDto?>(restaurant);
 
         return restaurantDto;
     }
 }
+
+
+#region Method 1 and 2
+// Method 1
+//var restaurantsDto = restaurants.Select(restaurant => new RestaurantDto
+//{
+//    Id = restaurant.Id,
+//    Name = restaurant.Name,
+//    Description = restaurant.Description,
+//    Category = restaurant.Category,
+//    HasDelivery = restaurant.HasDelivery,
+//    City = restaurant.Address?.City,
+//    Street = restaurant.Address?.Street,
+//    PostalCode = restaurant.Address?.PostalCode,
+//});
+
+// Method 2
+//var restaurantsDto = restaurants.Select(RestaurantDto.FromEntity);
+
+//var restaurantDto = restaurant == null ? null : RestaurantDto.FromEntity(restaurant);
+
+#endregion
