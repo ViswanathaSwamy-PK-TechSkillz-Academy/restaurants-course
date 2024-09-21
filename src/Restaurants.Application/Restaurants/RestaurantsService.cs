@@ -5,7 +5,7 @@ using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Application.Restaurants;
 
-internal class RestaurantsService(IRestaurantsRepository restaurantsRepository, 
+internal class RestaurantsService(IRestaurantsRepository restaurantsRepository,
     ILogger<RestaurantsService> logger, IMapper mapper) : IRestaurantsService
 {
 
@@ -15,7 +15,7 @@ internal class RestaurantsService(IRestaurantsRepository restaurantsRepository,
 
         var restaurants = await restaurantsRepository.GetAllAsync();
 
-        #region Method 1
+        #region Method 1 and 2
         // Method 1
         //var restaurantsDto = restaurants.Select(restaurant => new RestaurantDto
         //{
@@ -28,10 +28,13 @@ internal class RestaurantsService(IRestaurantsRepository restaurantsRepository,
         //    Street = restaurant.Address?.Street,
         //    PostalCode = restaurant.Address?.PostalCode,
         //});
-        #region
 
         // Method 2
-        var restaurantsDto = restaurants.Select(RestaurantDto.FromEntity);
+        //var restaurantsDto = restaurants.Select(RestaurantDto.FromEntity);
+        #region
+
+        // Method 3
+        var restaurantsDto = mapper.Map<IEnumerable<RestaurantDto>>(restaurants);
 
         return restaurantsDto!; // It will not be null. It might be empty collection.
     }
