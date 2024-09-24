@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.Restaurants;
 
@@ -28,4 +29,11 @@ public class RestaurantsController(IRestaurantsService restaurantsService) : Con
 
         return Ok(restaurant);
     }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateRestaurant()
+    {
+        return CreatedAtAction(nameof(GetById), new { id }, null);
+    }
+
 }
