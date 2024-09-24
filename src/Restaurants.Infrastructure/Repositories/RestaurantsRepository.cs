@@ -22,4 +22,9 @@ internal class RestaurantsRepository(RestaurantsDbContext dbContext) : IRestaura
 
         return restaurant;
     }
+
+    public Task<int> CreateAsync(Restaurant restaurant)
+    {
+        throw new NotImplementedException();
+    }
 }
