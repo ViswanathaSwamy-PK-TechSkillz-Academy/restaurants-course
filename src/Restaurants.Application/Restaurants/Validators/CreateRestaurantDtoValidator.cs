@@ -5,6 +5,9 @@ namespace Restaurants.Application.Restaurants.Validators;
 
 public class CreateRestaurantDtoValidator : AbstractValidator<CreateRestaurantDto>
 {
+
+    private readonly List<string> validCategories = ["Italian", "Mexican", "Japanese", "American", "Indian"];
+
     public CreateRestaurantDtoValidator()
     {
         RuleFor(dto => dto.Name)
@@ -14,9 +17,10 @@ public class CreateRestaurantDtoValidator : AbstractValidator<CreateRestaurantDt
             .NotEmpty()
             .WithMessage("Description is required.");
 
+        // Option 3
         RuleFor(dto => dto.Category)
-            .NotEmpty()
-            .WithMessage("Insert a valid category.");
+            .Must(validCategories.Contains)
+            .WithMessage("Invalid category. Please choose from the valid categories.");
 
         RuleFor(dto => dto.ContactEmail)
             .EmailAddress()
@@ -27,3 +31,20 @@ public class CreateRestaurantDtoValidator : AbstractValidator<CreateRestaurantDt
             .WithMessage("Please provide a valid postal code (XX-XXX).");
     }
 }
+
+// Option 1
+//RuleFor(dto => dto.Category)
+//    .NotEmpty()
+//    .WithMessage("Insert a valid category.");
+
+// Option 2
+//RuleFor(dto => dto.Category)
+//    .Custom((value, context) =>
+//    {
+//        var isValidCategory = validCategories.Contains(value);
+//        if (!isValidCategory)
+//        {
+//            context.AddFailure("Category", "Invalid category. Please choose from the valid categories.");
+//        }
+//    });
+
