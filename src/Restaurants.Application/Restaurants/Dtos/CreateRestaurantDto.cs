@@ -1,11 +1,16 @@
-﻿namespace Restaurants.Application.Restaurants.Dtos;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Restaurants.Application.Restaurants.Dtos;
 
 public class CreateRestaurantDto
 {
+    [Required]
     public string Name { get; set; } = string.Empty;
 
+    [Required]
     public string Description { get; set; } = string.Empty;
 
+    [Required]
     public string Category { get; set; } = string.Empty;
 
     public bool HasDelivery { get; set; }
