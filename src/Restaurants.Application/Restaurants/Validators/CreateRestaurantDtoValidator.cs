@@ -10,6 +10,10 @@ public class CreateRestaurantDtoValidator : AbstractValidator<CreateRestaurantDt
         RuleFor(dto => dto.Name)
             .Length(3, 100);
 
+        RuleFor(dto => dto.Description)
+            .EmailAddress()
+            .WithMessage("Description is required.");
+
         //RuleFor(dto => dto.Category)
         //    .Must(validCategories.Contains)
         //    .WithMessage("Invalid category. Please choose from the valid categories.");
