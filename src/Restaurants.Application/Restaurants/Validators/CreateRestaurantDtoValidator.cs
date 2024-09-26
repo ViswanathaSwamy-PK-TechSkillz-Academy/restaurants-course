@@ -11,7 +11,7 @@ public class CreateRestaurantDtoValidator : AbstractValidator<CreateRestaurantDt
             .Length(3, 100);
 
         RuleFor(dto => dto.Description)
-            .EmailAddress()
+            .NotEmpty()
             .WithMessage("Description is required.");
 
         RuleFor(dto => dto.Category)
