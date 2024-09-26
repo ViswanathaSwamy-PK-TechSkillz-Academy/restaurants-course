@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 using Restaurants.Application.Restaurants;
 using System.Reflection;
 
@@ -14,5 +15,7 @@ public static class ServiceCollectionExtension
         services.AddScoped<IRestaurantsService, RestaurantsService>();
 
         services.AddAutoMapper(applicationAssembly);
+
+        services.AddValidatorsFromAssembly(applicationAssembly);
     }
 }
