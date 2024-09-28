@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.Restaurants;
+using Restaurants.Application.Restaurants.Queries.GetAllRestaurants;
 using Restaurants.Application.Restaurants.Queries.GetRestaurantById;
 
 namespace Restaurants.API.Controllers;
@@ -22,7 +23,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById([FromRoute] int id)
     {
-        var restaurant = await mediator.Send(GetRe restaurantsService.GetById(id);
+        var restaurant = await mediator.Send(new GetRestaurantByIdQuery(id));
         if (restaurant == null)
         {
             return NotFound();
