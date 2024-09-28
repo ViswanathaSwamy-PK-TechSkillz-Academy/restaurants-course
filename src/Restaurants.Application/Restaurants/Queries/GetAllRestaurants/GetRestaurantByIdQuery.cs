@@ -1,6 +1,9 @@
-﻿namespace Restaurants.Application.Restaurants.Queries.GetAllRestaurants
+﻿using MediatR;
+using Restaurants.Application.Restaurants.Dtos;
+
+namespace Restaurants.Application.Restaurants.Queries.GetAllRestaurants;
+
+public class GetRestaurantByIdQuery(int id) : IRequest<RestaurantDto>
 {
-    internal class GetRestaurantByIdQuery
-    {
-    }
+    public int Id { get; } = id;
 }
