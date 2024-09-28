@@ -1,7 +1,5 @@
-﻿using MediatR;
+﻿namespace Restaurants.Application.Restaurants.Queries.GetRestaurantById;
 
-namespace Restaurants.Application.Restaurants.Queries.GetRestaurantById;
-
-public class GetAllRestaurantsQueryValidator 
+public class GetAllRestaurantsQueryValidator
 {
 }
