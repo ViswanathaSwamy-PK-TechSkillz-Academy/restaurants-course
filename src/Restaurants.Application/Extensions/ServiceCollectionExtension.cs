@@ -19,5 +19,7 @@ public static class ServiceCollectionExtension
 
         services.AddValidatorsFromAssembly(applicationAssembly)
             .AddFluentValidationAutoValidation();
+
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(applicationAssembly));
     }
 }
