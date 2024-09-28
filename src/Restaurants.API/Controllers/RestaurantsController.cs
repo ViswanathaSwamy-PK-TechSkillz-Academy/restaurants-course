@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.Restaurants;
-using Restaurants.Application.Restaurants.Dtos;
 
 namespace Restaurants.API.Controllers;
 
