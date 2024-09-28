@@ -17,7 +17,7 @@ public class DeleteRestaurantCommandHandler(ILogger<DeleteRestaurantCommandHandl
             return false;
         }
 
-        await restaurantsRepository.Delete(restaurant);
+        await restaurantsRepository.DeleteAsync(restaurant);
 
         return true;
     }

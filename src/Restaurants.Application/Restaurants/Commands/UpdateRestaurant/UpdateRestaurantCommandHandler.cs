@@ -13,7 +13,15 @@ public class UpdateRestaurantCommandHandler(ILogger<UpdateRestaurantCommandHandl
         logger.LogInformation("Updating restaurant with id: {RestaurantId} with {@UpdatedRestaurant}", request.Id, request);
         var restaurant = await restaurantsRepository.GetByIdAsync(request.Id);
         if (restaurant is null)
+        {
             return false;
+        }
+
+        restaurant.Name = request.Name;
+        restaurant.Description = request.Description;
+        restaurant.HasDelivery = request.HasDelivery;
+
+        await restaurantsRepository.SaveChangesAsync();
 
         return true;
     }
