@@ -17,9 +17,11 @@ public class UpdateRestaurantCommandHandler(ILogger<UpdateRestaurantCommandHandl
             return false;
         }
 
-        restaurant.Name = request.Name;
-        restaurant.Description = request.Description;
-        restaurant.HasDelivery = request.HasDelivery;
+        //restaurant.Name = request.Name;
+        //restaurant.Description = request.Description;
+        //restaurant.HasDelivery = request.HasDelivery;
+
+        mapper.Map(request, restaurant);
 
         await restaurantsRepository.SaveChangesAsync();
 
