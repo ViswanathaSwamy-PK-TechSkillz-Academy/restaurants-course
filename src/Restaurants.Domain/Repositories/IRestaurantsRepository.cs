@@ -10,9 +10,7 @@ public interface IRestaurantsRepository
 
     Task<int> CreateAsync(Restaurant restaurant);
 
-    //Task<int> Create(Restaurant entity);
-
-    //Task Delete(Restaurant entity);
+    Task Delete(Restaurant restaurant);
 
     //Task SaveChanges();
 

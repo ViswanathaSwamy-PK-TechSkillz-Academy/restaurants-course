@@ -15,9 +15,11 @@ public class DeleteRestaurantCommandHandler(ILogger<DeleteRestaurantCommandHandl
         var restaurant = await restaurantsRepository.GetByIdAsync(request.Id);
         if (restaurant is null)
         {
-            throw new NotFoundException(nameof(Restaurant), request.Id.ToString());
+            return false;
         }
 
+        await restaurantsRepository.Delete(restaurant);
+        
         return true;
     }
 }
