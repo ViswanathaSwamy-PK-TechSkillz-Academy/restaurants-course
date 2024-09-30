@@ -8,5 +8,5 @@ public interface IRestaurantsService
 
     Task<RestaurantDto?> GetById(int id);
 
-    Task<int> Create(CreateRestaurantDto createRestaurantDto);
+    //Task<int> Create(CreateRestaurantDto createRestaurantDto);
 }

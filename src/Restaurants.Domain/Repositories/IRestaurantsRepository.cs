@@ -10,11 +10,9 @@ public interface IRestaurantsRepository
 
     Task<int> CreateAsync(Restaurant restaurant);
 
-    //Task<int> Create(Restaurant entity);
+    Task DeleteAsync(Restaurant restaurant);
 
-    //Task Delete(Restaurant entity);
-
-    //Task SaveChanges();
+    Task SaveChangesAsync();
 
     //Task<(IEnumerable<Restaurant>, int)> GetAllMatchingAsync(string? searchPhrase, int pageSize, int pageNumber, string? sortBy, SortDirection sortDirection);
 }
