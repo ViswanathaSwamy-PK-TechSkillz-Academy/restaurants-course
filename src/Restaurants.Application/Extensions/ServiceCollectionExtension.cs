@@ -13,7 +13,7 @@ public static class ServiceCollectionExtension
     {
         Assembly? applicationAssembly = Assembly.GetExecutingAssembly();
 
-        services.AddScoped<IRestaurantsService, RestaurantsService>();
+        //services.AddScoped<IRestaurantsService, RestaurantsService>();
 
         services.AddAutoMapper(applicationAssembly);
 
