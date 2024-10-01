@@ -13,9 +13,9 @@ public class RestaurantsProfile : Profile
             .ForMember(d => d.Address, opt =>
                 opt.MapFrom(src => new Address
                 {
-                    City = src.City,
-                    PostalCode = src.PostalCode,
-                    Street = src.Street
+                    City = src.City ?? string.Empty,
+                    PostalCode = src.PostalCode ?? string.Empty,
+                    Street = src.Street ?? string.Empty
                 }))
             .ForMember(d => d.Dishes, opt => opt.Ignore());
 
