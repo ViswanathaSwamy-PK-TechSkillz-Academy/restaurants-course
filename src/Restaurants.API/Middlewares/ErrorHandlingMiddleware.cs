@@ -28,7 +28,7 @@ public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : 
         catch (InvalidOperationException invalidOperation)
         {
             logger.LogWarning(invalidOperation, "Exception Type: {ExceptionType}, Message: {Message}", invalidOperation.GetType().Name, invalidOperation.Message);
-            await HandleExceptionAsync(context, HttpStatusCode.InternalServerError, invalidOperation.Message);
+            await HandleExceptionAsync(context, HttpStatusCode.BadRequest, invalidOperation.Message);
         }
         catch (RetryLimitExceededException retryLimitExceededException)
         {

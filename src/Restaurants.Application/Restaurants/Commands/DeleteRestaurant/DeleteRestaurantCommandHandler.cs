@@ -13,11 +13,8 @@ public class DeleteRestaurantCommandHandler(ILogger<DeleteRestaurantCommandHandl
     {
         logger.LogInformation("Deleting restaurant with id: {RestaurantId}", request.Id);
 
-        var restaurant = await restaurantsRepository.GetByIdAsync(request.Id);
-        if (restaurant is null)
-        {
-            throw new NotFoundException(nameof(Restaurant), request.Id.ToString());
-        }
+        var restaurant = await restaurantsRepository.GetByIdAsync(request.Id)
+            ?? throw new NotFoundException(nameof(Restaurant), request.Id.ToString());
 
         await restaurantsRepository.DeleteAsync(restaurant);
     }
