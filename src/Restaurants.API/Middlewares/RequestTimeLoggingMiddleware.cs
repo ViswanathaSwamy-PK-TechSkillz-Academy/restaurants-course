@@ -10,12 +10,13 @@ public class RequestTimeLoggingMiddleware(ILogger<RequestTimeLoggingMiddleware> 
         await next.Invoke(context);
         stopWatch.Stop();
 
-        if (stopWatch.ElapsedMilliseconds / 1000 > 4)
+        // Check if the request took longer than 4000 milliseconds (4 seconds)
+        if (stopWatch.Elapsed.TotalMilliseconds > 4000)
         {
             logger.LogInformation("Request [{Verb}] at {Path} took {Time} ms",
                 context.Request.Method,
                 context.Request.Path,
-                stopWatch.ElapsedMilliseconds);
+                stopWatch.Elapsed.TotalMilliseconds);
         }
     }
 }
