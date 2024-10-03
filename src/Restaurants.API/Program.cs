@@ -5,7 +5,8 @@ using Serilog;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddPresentation(builder.Configuration);  // TODO: Use Strongly Type Configuration Object
+// TODO: Use Strongly Type Configuration Object
+builder.Services.AddPresentation(builder.Configuration);
 
 builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
 

@@ -13,7 +13,7 @@ public class GetRestaurantByIdQueryHandler(ILogger<GetRestaurantByIdQueryHandler
 {
     public async Task<RestaurantDto?> Handle(GetRestaurantByIdQuery request, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Getting restaurant by {id}", request.Id);
+        logger.LogInformation("Getting restaurant by {RestaurantId}", request.Id);
 
         var restaurant = await restaurantsRepository.GetByIdAsync(request.Id)
             ?? throw new NotFoundException(nameof(Restaurant), request.Id.ToString());
