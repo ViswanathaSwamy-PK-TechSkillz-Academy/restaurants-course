@@ -16,6 +16,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
     [AllowAnonymous]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<RestaurantDto>))]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll()
     {
@@ -25,6 +26,8 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<RestaurantDto?>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult<RestaurantDto?>> GetById([FromRoute] int id)
     {
