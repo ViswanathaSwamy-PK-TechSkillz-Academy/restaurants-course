@@ -1,4 +1,5 @@
 using Restaurants.API.Extensions;
+using Restaurants.API.Middlewares;
 using Restaurants.Infrastructure.Seeders;
 using Serilog;
 
@@ -11,6 +12,10 @@ builder.Services.AddPresentation(builder.Configuration);
 builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
 
 WebApplication app = builder.Build();
+
+app.UseMiddleware<ErrorHandlingMiddleware>();
+
+app.UseMiddleware<RequestTimeLoggingMiddleware>();
 
 app.UseSerilogRequestLogging();
 
