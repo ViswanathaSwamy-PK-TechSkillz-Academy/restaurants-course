@@ -40,3 +40,16 @@ Content-Type: application/json
 }
 
 ###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants/1/dishes
+Content-Type: application/json
+
+{
+  "name": "Dish 2",
+  "description": "Dish 2 for Restaurant 1",
+  "price": 10,
+  "kiloCalories": 100,
+  "restaurantId": 1
+}
+
+###
