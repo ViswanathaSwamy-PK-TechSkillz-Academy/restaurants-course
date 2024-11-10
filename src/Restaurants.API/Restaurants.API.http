@@ -53,3 +53,9 @@ Content-Type: application/json
 }
 
 ###
+
+GET https://localhost:7005/api/restaurants/3/dishes/7
+
+
+
+###

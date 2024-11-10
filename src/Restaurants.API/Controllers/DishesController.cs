@@ -23,6 +23,7 @@ public class DishesController(IMediator mediator) : ControllerBase
         return Created();
     }
 
+    [HttpGet]
     public async Task<ActionResult<IEnumerable<DishDto>>> GetAllForRestaurant([FromRoute] int restaurantId)
     {
         var dishes = await mediator.Send(new GetDishesForRestaurantQuery(restaurantId));
