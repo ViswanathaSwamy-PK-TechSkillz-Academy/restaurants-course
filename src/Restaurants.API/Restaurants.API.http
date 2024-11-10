@@ -48,13 +48,13 @@ Content-Type: application/json
   "name": "Dish 2",
   "description": "Dish 2 for Restaurant 1",
   "price": 10,
-  "kiloCalories": 100,
+  "kiloCalories": 108,
   "restaurantId": 1
 }
 
 ###
 
-GET https://localhost:7005/api/restaurants/3/dishes/7
+GET {{Restaurants.API_HostAddress}}/api/restaurants/1/dishes/11
 
 
 
