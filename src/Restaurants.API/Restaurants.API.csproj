@@ -4,11 +4,12 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>148d183f-3ad0-4720-9dd0-9df637716a8e</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Serilog.AspNetCore" Version="8.0.*" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.*" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.*" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.*">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
