@@ -1,15 +1,13 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using Restaurants.Application.Users.Commands.AssignUserRole;
 using Restaurants.Domain.Entities;
 using Restaurants.Domain.Exceptions;
 
 namespace Restaurants.Application.Users.Commands.UnassignUserRole;
 
 public class UnassignUserRoleCommandHandler(ILogger<UnassignUserRoleCommandHandler> logger,
-    UserManager<User> userManager,
-    RoleManager<IdentityRole> roleManager) : IRequestHandler<UnassignUserRoleCommand>
+    UserManager<User> userManager, RoleManager<IdentityRole> roleManager) : IRequestHandler<UnassignUserRoleCommand>
 {
     public async Task Handle(UnassignUserRoleCommand request, CancellationToken cancellationToken)
     {
