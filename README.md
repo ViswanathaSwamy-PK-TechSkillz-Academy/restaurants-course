@@ -12,10 +12,11 @@ I am learning .NET Web API using Clean Architecture from different Video Courses
 ```powershell
 dotnet tool update --global dotnet-ef
 
-D:\TSA\restaurants-course\src\Restaurants.Infrastructure
+CD D:\TSA\restaurants-course\src\Restaurants.Infrastructure
 
 # Add migration for RestaurantsDbContext
 dotnet ef migrations add InitialCreate --context RestaurantsDbContext --project . --startup-project ..\Restaurants.API
+dotnet ef migrations add IdentityAdded --context RestaurantsDbContext --project . --startup-project ..\Restaurants.API
 
 # Update database for RestaurantsDbContext
 dotnet ef database update --context RestaurantsDbContext --project . --startup-project ..\Restaurants.API

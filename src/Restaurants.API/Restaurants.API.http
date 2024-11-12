@@ -59,3 +59,45 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants/1/dishes/11
 
 
 ###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/register
+Content-Type: application/json
+
+{
+    "email": "testuser@example.com",
+    "password": "Sample@123$"
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+    "email": "testuser@example.com",
+    "password": "Sample@123$"
+}
+###
+
+PATCH {{Restaurants.API_HostAddress}}/api/identity/user
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "Nationality": "French",
+  "DateOfBirth": "2010-01-01"
+}
+
+###
+
+
+POST {{Restaurants.API_HostAddress}}/api/identity/userRole
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "UserEmail": "owner2@test.com",
+  "RoleName": "Owner"
+}
+
+###

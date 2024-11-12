@@ -1,15 +1,13 @@
 using Restaurants.API.Extensions;
 using Restaurants.API.Middlewares;
+using Restaurants.Domain.Entities;
 using Restaurants.Infrastructure.Seeders;
 using Serilog;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// TODO: Use Strongly Type Configuration Object
-builder.Services.AddPresentation(builder.Configuration);
-
-builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
+builder.AddPresentation();
 
 WebApplication app = builder.Build();
 
@@ -32,6 +30,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapGroup("api/identity")
+       .WithTags("Identity")
+       .MapIdentityApi<User>();
 
 app.UseAuthorization();
 
