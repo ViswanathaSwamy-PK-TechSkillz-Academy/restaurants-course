@@ -10,7 +10,7 @@ public static class WebApplicationBuilderExtensions
 {
     public static void AddPresentation(this WebApplicationBuilder builder)
     {
-        //builder.Services.AddAuthentication();
+        builder.Services.AddAuthentication();
 
         builder.Services.AddControllers();
 
