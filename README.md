@@ -17,6 +17,7 @@ CD D:\TSA\restaurants-course\src\Restaurants.Infrastructure
 # Add migration for RestaurantsDbContext
 dotnet ef migrations add InitialCreate --context RestaurantsDbContext --project . --startup-project ..\Restaurants.API
 dotnet ef migrations add IdentityAdded --context RestaurantsDbContext --project . --startup-project ..\Restaurants.API
+dotnet ef migrations add UserPropertiesAdded --context RestaurantsDbContext --project . --startup-project ..\Restaurants.API
 
 # Update database for RestaurantsDbContext
 dotnet ef database update --context RestaurantsDbContext --project . --startup-project ..\Restaurants.API

@@ -1,4 +1,6 @@
 @Restaurants.API_HostAddress = https://localhost:7034
+@token = CfDJ8FNCtisP6UhBlVXdXUTLBU7jGNvCKI7h-i3LPGNQLDQeD__WzuKWEKpELi7q5TzIuqDaRj2_XEsbcV_JJ5JDubYVWGrvCk2zJbkOgQzyF6tEsi0DwNkHqL88JQtvsr1bOH0EMLSHNGmvNhqQLWvu7jWDF7zHTdRx9BZIlQmFXjZ08YTC8esuJMEVvqp9dWgnvcU1KQQ4RAM-0-Oqh9L-4gTL3cZYXErclscwq0iZSWSBuBX46QE1Jcx9e1KVXzuK9o1cK6uCnyJ2dstGR8qypJy-Vt7Dlc1hS6LbCNX8SJ7LepQQRIxeWm6AJWsFYZ05zw8MMLMHRk-XKMgMJHbioz10CNq8eV3evvTFEvnQRDvX89_ab0wC7_OHpestIDvNwbFwcW0bL81g9Mit6VTJiPOi81qK89qGhIeLsMJ_Ku5IyLZKoWezGkV-zvp01ElOKXcU9GrVHGt_mwb94physpjF8oHcN4GLR4Sbj_vFZrgnI2B4ytakE8Wdf9NzxABySfRuV1QF44gZQHDhJoXHOy-YUTcx-bYAYU4ppsT_IeDH__F5aC7xw7lzOrgJ5POv5EpmQMUEN4e53IUWyFahwOkRADrynK0TTcnkFO7DfIU7fdueVOgPUpr2byNicdvcU--HHFUCnKDmZEjrBbb-hekoyBpejLSBz45z4IA7_UJzFfq52CSaLLy66OKyzyUaCz0ALXZltdJWvbDxy3AnE10
+
 
 GET {{Restaurants.API_HostAddress}}/api/restaurants
 Accept: application/json
@@ -6,11 +8,13 @@ Accept: application/json
 ###
 
 GET {{Restaurants.API_HostAddress}}/api/restaurants/1
+Authorization: Bearer {{token}}
 
 ###
 
 POST {{Restaurants.API_HostAddress}}/api/restaurants
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
       "Name": "Owner2 restaurant2",
@@ -27,11 +31,13 @@ Content-Type: application/json
 ###
 
 DELETE {{Restaurants.API_HostAddress}}/api/restaurants/6
+Authorization: Bearer {{token}}
 
 ### 
 
 PATCH {{Restaurants.API_HostAddress}}/api/restaurants/3
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "Name": "Owner2 restaurant2 - V1",
