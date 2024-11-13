@@ -1,5 +1,5 @@
 @Restaurants.API_HostAddress = https://localhost:7034
-@token = CfDJ8FNCtisP6UhBlVXdXUTLBU7jGNvCKI7h-i3LPGNQLDQeD__WzuKWEKpELi7q5TzIuqDaRj2_XEsbcV_JJ5JDubYVWGrvCk2zJbkOgQzyF6tEsi0DwNkHqL88JQtvsr1bOH0EMLSHNGmvNhqQLWvu7jWDF7zHTdRx9BZIlQmFXjZ08YTC8esuJMEVvqp9dWgnvcU1KQQ4RAM-0-Oqh9L-4gTL3cZYXErclscwq0iZSWSBuBX46QE1Jcx9e1KVXzuK9o1cK6uCnyJ2dstGR8qypJy-Vt7Dlc1hS6LbCNX8SJ7LepQQRIxeWm6AJWsFYZ05zw8MMLMHRk-XKMgMJHbioz10CNq8eV3evvTFEvnQRDvX89_ab0wC7_OHpestIDvNwbFwcW0bL81g9Mit6VTJiPOi81qK89qGhIeLsMJ_Ku5IyLZKoWezGkV-zvp01ElOKXcU9GrVHGt_mwb94physpjF8oHcN4GLR4Sbj_vFZrgnI2B4ytakE8Wdf9NzxABySfRuV1QF44gZQHDhJoXHOy-YUTcx-bYAYU4ppsT_IeDH__F5aC7xw7lzOrgJ5POv5EpmQMUEN4e53IUWyFahwOkRADrynK0TTcnkFO7DfIU7fdueVOgPUpr2byNicdvcU--HHFUCnKDmZEjrBbb-hekoyBpejLSBz45z4IA7_UJzFfq52CSaLLy66OKyzyUaCz0ALXZltdJWvbDxy3AnE10
+@token = CfDJ8FNCtisP6UhBlVXdXUTLBU7rb7l2iNi3o4eEePG2ZdoOoA1vmn0JuPJE1wogiG2nwdNmVXDdwzs2MHcYZRhcJYdQKVWDKM264DU_DIi6XNiOh7RcX2-OyuK77X5DMsRuJj_DOdD7asG_NgjBgqs-n9UxyIp5oFzsvLeXWmtRYrFMN2_0fvZsEO1mJbJ2szr-dCwlBtFRnTxPsm4McHFQh_Ymrb38J1qJYEKRH7t17rmzMpW--IbJi4SsMIYnyQBSgLJ22Mq8xT-uWlCTX52iD7s4g6K7pqXNM6wdPrAKi_pYfSKBMGkLntockHoYczW4pnhC-OULd4iL_79uy8__rEZaDnr4QpesrhbY6PUyV9DCHXh7rnEAsN9GC1qKypGQULUbkjeWRl5B8y0cqFBi95hsFpXY9qMVzkgXhSUzzNFk9on-6XzoPUACMr2PgaESZxsyGhiJVvTRpIqqwnxDLn-VQ48Az5wYNuvWX4z98RrqrPLS4H2Kvhl_S6HPRRruFbhNhe7Ib8R1IB2OBMDHY0Mfoyz_eZtAXUopWDXHYe3gOAa9VZfuiDuTv5GWwSqTffaIwQJvtCKSXNMX4_HpizJ-T3jPzVLesARivgLsGDTz0spXyCE4OA3Yegg3-LEB0uPcecmtAQy7uxT7N7yKIWpQ-spUBi-SsJt51bGxWk7sW9Npdw-2V1jqGpnk6gVWpw
 
 
 GET {{Restaurants.API_HostAddress}}/api/restaurants
@@ -17,7 +17,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-      "Name": "Owner2 restaurant2",
+      "Name": "Owner New restaurant",
       "Description": "A cozy restaurant serving a variety of delicious dishes.",
       "Category": "Indian",
       "HasDelivery": true,
@@ -70,17 +70,19 @@ POST {{Restaurants.API_HostAddress}}/api/identity/register
 Content-Type: application/json
 
 {
-    "email": "testuser@example.com",
+    "email": "user1@example.com",
     "password": "Sample@123$"
 }
 
 ###
 
+### testuser | owner | admin | user1
+
 POST {{Restaurants.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
-    "email": "testuser@example.com",
+    "email": "owner@example.com",
     "password": "Sample@123$"
 }
 ###
