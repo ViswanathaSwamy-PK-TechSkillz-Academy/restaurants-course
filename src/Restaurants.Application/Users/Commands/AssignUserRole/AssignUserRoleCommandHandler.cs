@@ -12,6 +12,7 @@ public class AssignUserRoleCommandHandler(ILogger<AssignUserRoleCommandHandler> 
     public async Task Handle(AssignUserRoleCommand request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Assigning user role: {@Request}", request);
+
         var user = await userManager.FindByEmailAsync(request.UserEmail)
             ?? throw new NotFoundException(nameof(User), request.UserEmail);
 
