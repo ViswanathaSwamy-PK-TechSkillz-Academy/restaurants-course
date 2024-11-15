@@ -1,7 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Restaurants.Application.Users.Commands.AssignUserRole;
+using Restaurants.Application.Users.Commands.UnassignUserRole;
 using Restaurants.Application.Users.Commands.UpdateUserDetails;
+using Restaurants.Domain.Constants;
 
 namespace Restaurants.API.Controllers;
 
@@ -19,21 +22,21 @@ public class IdentityController(IMediator mediator) : ControllerBase
         return NoContent();
     }
 
-    //[HttpPost("userRole")]
-    ////[Authorize(Roles = UserRoles.Admin)]
-    //public async Task<IActionResult> AssignUserRole(AssignUserRoleCommand command)
-    //{
-    //    await mediator.Send(command);
+    [HttpPost("userRole")]
+    [Authorize(Roles = UserRoles.Admin)]
+    public async Task<IActionResult> AssignUserRole(AssignUserRoleCommand command)
+    {
+        await mediator.Send(command);
 
-    //    return NoContent();
-    //}
+        return NoContent();
+    }
 
-    //[HttpDelete("userRole")]
-    ////[Authorize(Roles = UserRoles.Admin)]
-    //public async Task<IActionResult> UnassignUserRole(UnassignUserRoleCommand command)
-    //{
-    //    await mediator.Send(command);
+    [HttpDelete("userRole")]
+    [Authorize(Roles = UserRoles.Admin)]
+    public async Task<IActionResult> UnassignUserRole(UnassignUserRoleCommand command)
+    {
+        await mediator.Send(command);
 
-    //    return NoContent();
-    //}
+        return NoContent();
+    }
 }
