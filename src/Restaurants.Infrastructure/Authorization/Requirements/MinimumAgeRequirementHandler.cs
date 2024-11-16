@@ -17,12 +17,12 @@ internal class MinimumAgeRequirementHandler(ILogger<MinimumAgeRequirementHandler
         }
 
         logger.LogInformation("User: {Email}, date of birth {DoB} - Handling MinimumAgeRequirement",
-            currentUser.Email,
-            currentUser.DateOfBirth);
+            currentUser.Email, currentUser.DateOfBirth);
 
         if (currentUser.DateOfBirth == null)
         {
             logger.LogWarning("User date of birth is null");
+
             context.Fail();
             return Task.CompletedTask;
         }
