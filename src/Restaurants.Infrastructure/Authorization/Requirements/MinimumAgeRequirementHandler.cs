@@ -11,7 +11,11 @@ internal class MinimumAgeRequirementHandler(ILogger<MinimumAgeRequirementHandler
         MinimumAgeRequirement requirement)
     {
         var currentUser = userContext.GetCurrentUser();
-
+        if (currentUser == null)
+        {
+            context.Fail();
+            return Task.CompletedTask;
+        }
 
         logger.LogInformation("User: {Email}, date of birth {DoB} - Handling MinimumAgeRequirement",
             currentUser.Email,
