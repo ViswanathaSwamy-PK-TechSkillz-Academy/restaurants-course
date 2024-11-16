@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,6 +44,8 @@ public static class ServiceCollectionExtensions
                 builder => builder.AddRequirements(new MinimumAgeRequirement(20)));
         //.AddPolicy(PolicyNames.CreatedAtleast2Restaurants,
         //    builder => builder.AddRequirements(new CreatedMultipleRestaurantsRequirement(2)));
+
+        services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
     }
 
 }
