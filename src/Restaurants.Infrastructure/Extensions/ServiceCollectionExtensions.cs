@@ -39,7 +39,7 @@ public static class ServiceCollectionExtensions
 
         services.AddAuthorizationBuilder()
             .AddPolicy(PolicyNames.HasNationality,
-                builder => builder.RequireClaim(AppClaimTypes.Nationality, "Indian", "German", "Polish"))
+                builder => builder.RequireClaim(AppClaimTypes.Nationality, "German", "Indian", "Polish"))
             .AddPolicy(PolicyNames.AtLeast20,
                 builder => builder.AddRequirements(new MinimumAgeRequirement(20)));
         //.AddPolicy(PolicyNames.CreatedAtleast2Restaurants,
