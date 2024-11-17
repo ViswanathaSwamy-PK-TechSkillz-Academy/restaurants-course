@@ -7,19 +7,22 @@ namespace Restaurants.Infrastructure.Authorization.Requirements;
 internal class MinimumAgeRequirementHandler(ILogger<MinimumAgeRequirementHandler> logger,
     IUserContext userContext) : AuthorizationHandler<MinimumAgeRequirement>
 {
-    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
-        MinimumAgeRequirement requirement)
+    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, MinimumAgeRequirement requirement)
     {
         var currentUser = userContext.GetCurrentUser();
-
+        if (currentUser == null)
+        {
+            context.Fail();
+            return Task.CompletedTask;
+        }
 
         logger.LogInformation("User: {Email}, date of birth {DoB} - Handling MinimumAgeRequirement",
-            currentUser.Email,
-            currentUser.DateOfBirth);
+            currentUser.Email, currentUser.DateOfBirth);
 
         if (currentUser.DateOfBirth == null)
         {
             logger.LogWarning("User date of birth is null");
+
             context.Fail();
             return Task.CompletedTask;
         }

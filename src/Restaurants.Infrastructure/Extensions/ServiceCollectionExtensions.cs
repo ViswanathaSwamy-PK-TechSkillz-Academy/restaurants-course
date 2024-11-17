@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,11 +39,13 @@ public static class ServiceCollectionExtensions
 
         services.AddAuthorizationBuilder()
             .AddPolicy(PolicyNames.HasNationality,
-                builder => builder.RequireClaim(AppClaimTypes.Nationality, "German", "Polish"))
+                builder => builder.RequireClaim(AppClaimTypes.Nationality, "German", "Indian", "Polish"))
             .AddPolicy(PolicyNames.AtLeast20,
-                builder => builder.AddRequirements(new MinimumAgeRequirement(20)))
-            .AddPolicy(PolicyNames.CreatedAtleast2Restaurants,
-                builder => builder.AddRequirements(new CreatedMultipleRestaurantsRequirement(2)));
+                builder => builder.AddRequirements(new MinimumAgeRequirement(20)));
+        //.AddPolicy(PolicyNames.CreatedAtleast2Restaurants,
+        //    builder => builder.AddRequirements(new CreatedMultipleRestaurantsRequirement(2)));
+
+        services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
     }
 
 }

@@ -1,9 +1,10 @@
 @Restaurants.API_HostAddress = https://localhost:7034
-@token = CfDJ8FNCtisP6UhBlVXdXUTLBU7zlvOtdkCkSWFXqkC1OIk29NySwd40L2nowj9FuiNjy9jrxd5wioEaShodJZVZWtjDi2YT-aYp4PyqJJWuAMFjBacnKBzt3JLIJISMzRgId5m2_6QRcAeYoKX1z9nsj-DAsSsSUkcGCPj23l2x2EbjAKQhfia6UJ1vah9hyXZRnzET5lzd7teTHhtg_iodI7u1wBs3O06WNmEwuaWLs30qV-sYPRbF6QerV6LRkYKWXuVrN2cSAu3CoyozNyQN2YTqRa67bArOxWse1P73U6_BYrPJOzhwLNtJcr0epJl5TVp6LZ5rRUpNPNn8T0uTVtGEF0H6rSoIIAVbcmx7KLYpmQZOzLDrSxcQUUd03hp5W_kDQyeRRpNF_UL-CUA1_AOrBiHpLlY2dkcEIlInnzh1traQWviiNJG3ITuuYAZjcVWDs5IThiWWnPusM81UovxJdpghT7_F8--WHjdKCtrFH0daOn4QV2ezYI2q6ZiB31N3QPqgTsGj53ymkCVvPXOIBSmEFyD7X-HQL83_pfZoS-r_tjRDxlLEjZvLGAo_eAXSHar4bhgJMfPOD_1Z93w0cnyLdNgGBFmoAQVNNjfel1pd5acmOXRlW7QMcHu8A-_csvtC1fZ7E_u1m8Jb942-RXeziFo1gN6orG1LEzl32_Zf-K-ImM_tohYyyofJ6-63-UMWoocRZc7YBEA1giwLockJ4-cmssMYth7ge6r-kzYZuGKtfgbI2jOIFkRLdfDjHDfdl5AbPYoAY0UYmwJERvheEmM9VkFRTRX83UBx
+@token = CfDJ8FNCtisP6UhBlVXdXUTLBU7xSDA1w0Lz6vhM1LnJYdi3eE4gaYIzSUheYUw0wm8LL6vYeMpTx9HJCh9-KDMI3p411jyF5vYqUKbjIF-ervxtiODve_HnhCZneKRLVxkm2Lq0S8pP52oDdwDyP7pRFFMZOxcvRLrcI26F8ORyKfltqICVYgxwz-WqvPK5HBCWRGIL7-5mUFoqv9LlVW_iiyrJFCVlXEbkfSE3buudmG1VWd3AG1lno7RU40agkxo3y07FJX4VitR-KTdTjsSEp7qIl333CSPp9nOrl3FPkl2Zh8unU27jpn9Y9fH5MTTgm0tgrq1DuZcEH_x2KI7n3-Ev6kTlWtie-XqHmS6mwq0gGKBklVZ-_NAMydQOE1jDEsunNtHA8nMh6vOhbbHlHk4UpPp6SbR9twztV4QYGlUxpEUjfhs1YdWQng8Ebjm_0V2xQzw5_dTjI68-ZyybpNgz31-TKcd0_d6PnLTQOmboCkzFNk3fBMA3Lrt3ikUR6k4BDfmr-NrCbw64VmArK_1PoM1ljjI6LJ1mdEkdYIumOEtdmde3KTk78MoFnE7o8liUS_FB3_3n4q070O4e0M4EtKyMzy9sRH04lEIb9jMxnJO45nY2BgtKtCKfYFv8g97FQ4piyFJeVjoNT3l7glO_g8GRGTWvnW6BLv_epMLrxQ-s7z6rjCjYFY3w7TOdFYyKVA0li2YwOkJ9Yc-Ap4ZpCAIJYK-Ke2PHhDJAUoK6sZbNtg6BVvcl_0jkYAxbcXJCc0MU1w9q7Z5WFQUVQVMjgspH3_pOKd0PyJn8xVIWeavgQaqjjJh7i0SR_Yd1iyZzNYeVc15aM2nZpERl0CFuhbIl1ImK8CL_7FU63M3AXpQNHoIfjDgwgt0iHot_rw
 
 
 GET {{Restaurants.API_HostAddress}}/api/restaurants
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
 
@@ -17,7 +18,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-      "Name": "Owner New restaurant",
+      "Name": "Owner restaurant-1",
       "Description": "A cozy restaurant serving a variety of delicious dishes.",
       "Category": "Indian",
       "HasDelivery": true,
@@ -27,6 +28,12 @@ Authorization: Bearer {{token}}
       "Street": "123 Main Street",
       "PostalCode": "10-010"
 }
+
+###
+
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/1/dishes
+Authorization: Bearer {{token}}
 
 ###
 
@@ -49,6 +56,7 @@ Authorization: Bearer {{token}}
 
 POST {{Restaurants.API_HostAddress}}/api/restaurants/1/dishes
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "name": "Dish 2",
@@ -61,7 +69,7 @@ Content-Type: application/json
 ###
 
 GET {{Restaurants.API_HostAddress}}/api/restaurants/1/dishes/11
-
+Authorization: Bearer {{token}}
 
 
 ###
