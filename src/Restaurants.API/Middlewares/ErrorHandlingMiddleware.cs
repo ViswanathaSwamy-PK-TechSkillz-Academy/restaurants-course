@@ -35,6 +35,12 @@ public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : 
             logger.LogWarning(retryLimitExceededException, "Exception Type: {ExceptionType}, Message: {Message}", retryLimitExceededException.GetType().Name, retryLimitExceededException.Message);
             await HandleExceptionAsync(context, HttpStatusCode.InternalServerError, "Retry limit exceeded");
         }
+        catch (ForbidException forbidException)
+        {
+            context.Response.StatusCode = 403;
+            logger.LogWarning(forbidException, "Exception Type: {ExceptionType}, Message: {Message}", forbidException.GetType().Name, forbidException.Message);
+            await context.Response.WriteAsync("Access forbidden");
+        }
         catch (Exception ex)
         {
             logger.LogError(ex, "Exception Type: {ExceptionType}, Message: {Message}", ex.GetType().Name, ex.Message);
