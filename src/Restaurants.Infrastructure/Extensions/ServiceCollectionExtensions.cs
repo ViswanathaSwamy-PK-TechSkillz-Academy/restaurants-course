@@ -49,6 +49,8 @@ public static class ServiceCollectionExtensions
 
         services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
 
+        services.AddScoped<IAuthorizationHandler, CreatedMultipleRestaurantsRequirementHandler>();
+
         services.AddScoped<IRestaurantAuthorizationService, RestaurantAuthorizationService>();
     }
 
