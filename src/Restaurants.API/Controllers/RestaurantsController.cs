@@ -18,6 +18,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
     [AllowAnonymous]
+    //[Authorize(Policy = PolicyNames.CreatedAtleast2Restaurants)]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<RestaurantDto>))]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll()
