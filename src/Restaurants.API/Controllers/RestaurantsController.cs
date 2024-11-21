@@ -21,7 +21,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     //[Authorize(Policy = PolicyNames.CreatedAtleast2Restaurants)]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<RestaurantDto>))]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll()
+    public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll([FromQuery] GetAllRestaurantsQuery query)
     {
         var restaurants = await mediator.Send(new GetAllRestaurantsQuery());
 
