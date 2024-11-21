@@ -14,5 +14,5 @@ public interface IRestaurantsRepository
 
     Task SaveChangesAsync();
 
-    Task<(IEnumerable<Restaurant>, int)> GetAllMatchingAsync(string? searchPhrase);
+    Task<IEnumerable<Restaurant>> GetAllMatchingAsync(string? searchPhrase);
 }

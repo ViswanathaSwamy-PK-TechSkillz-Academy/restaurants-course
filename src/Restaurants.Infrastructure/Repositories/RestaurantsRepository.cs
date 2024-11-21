@@ -15,16 +15,18 @@ internal class RestaurantsRepository(RestaurantsDbContext dbContext) : IRestaura
         return restaurants;
     }
 
-    public async Task<(IEnumerable<Restaurant>, int)> GetAllMatchingAsync(string? searchPhrase)
+    public async Task<IEnumerable<Restaurant>> GetAllMatchingAsync(string? searchPhrase)
     {
         var searchPhraseLower = searchPhrase?.ToLower();
 
-        var restaurants = dbContext
+        var restaurants = await dbContext
             .Restaurants
-            .Where(r => searchPhraseLower == null || (r.Name.ToLower().Contains(searchPhraseLower)
-                                                   || r.Description.ToLower().Contains(searchPhraseLower)));
+            .Where(r => searchPhraseLower == null ||
+                   (r.Name.ToLower().Contains(searchPhraseLower) ||
+                   r.Description.ToLower().Contains(searchPhraseLower)))
+            .ToListAsync();
 
-        var totalCount = await restaurants.CountAsync();
+        //var totalCount = await restaurants.CountAsync();
 
         //if (sortBy != null)
         //{
@@ -47,7 +49,7 @@ internal class RestaurantsRepository(RestaurantsDbContext dbContext) : IRestaura
         //    .Take(pageSize)
         //    .ToListAsync();
 
-        return (restaurants, totalCount);
+        return restaurants;
     }
 
     public async Task<Restaurant?> GetByIdAsync(int id)
