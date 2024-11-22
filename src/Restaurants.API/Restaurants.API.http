@@ -3,7 +3,7 @@
 
 
 # GET {{Restaurants.API_HostAddress}}/api/restaurants
-GET {{Restaurants.API_HostAddress}}/api/restaurants?searchPhrase=&pageSize=5&pageNumber=101
+GET {{Restaurants.API_HostAddress}}/api/restaurants?searchPhrase=wiza&pageSize=5&pageNumber=101
 Accept: application/json
 Authorization: Bearer {{token}}
 
