@@ -14,7 +14,7 @@ internal class RestaurantsRepository(RestaurantsDbContext dbContext) : IRestaura
         return restaurants;
     }
 
-    public async Task<IEnumerable<Restaurant>> GetAllMatchingAsync(string? searchPhrase)
+    public async Task<IEnumerable<Restaurant>> GetAllMatchingAsync(string? searchPhrase, int pageSize, int pageNumber)
     {
         var searchPhraseLower = searchPhrase?.ToLower();
 
@@ -22,6 +22,8 @@ internal class RestaurantsRepository(RestaurantsDbContext dbContext) : IRestaura
             .Where(r => (searchPhraseLower == null) ||
                         (r.Name.ToLower().Contains(searchPhraseLower)) ||
                         (r.Description.ToLower().Contains(searchPhraseLower)))
+            .Skip(pageSize * (pageNumber - 1))
+            .Take(pageSize)
             .ToListAsync();
 
         return restaurants;
