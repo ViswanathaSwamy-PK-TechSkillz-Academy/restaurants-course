@@ -14,14 +14,13 @@ public class GetAllRestaurantsQueryHandler(ILogger<GetAllRestaurantsQueryHandler
     {
         logger.LogInformation("Getting all restaurants");
 
-        //var restaurants = await restaurantsRepository.GetAllAsync();
-        var restaurants = await restaurantsRepository.GetAllMatchingAsync(request.SearchPhrase,
+        var (restaurants, totalCount) = await restaurantsRepository.GetAllMatchingAsync(request.SearchPhrase,
             request.PageSize, request.PageNumber);
 
         var restaurantsDto = mapper.Map<IEnumerable<RestaurantDto>>(restaurants);
 
         var result = new PagedResult<RestaurantDto>(restaurantsDto, totalCount, request.PageSize, request.PageNumber);
 
-        return restaurantsDto!; // It will not be null. It might be empty collection.
+        return result; // It will not be null. It might be empty collection.
     }
 }
