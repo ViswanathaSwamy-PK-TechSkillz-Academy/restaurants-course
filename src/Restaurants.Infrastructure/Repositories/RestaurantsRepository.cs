@@ -17,13 +17,11 @@ internal class RestaurantsRepository(RestaurantsDbContext dbContext) : IRestaura
     public async Task<IEnumerable<Restaurant>> GetAllMatchingAsync(string? searchPhrase)
     {
         var searchPhraseLower = searchPhrase?.ToLower();
-        if(string.IsNullOrEmpty(searchPhraseLower))
-        {
-            return [];
-        }
 
         var restaurants = await dbContext.Restaurants
-            .Where(r => r.Name.ToLower().Contains(searchPhraseLower) || r.Description.ToLower().Contains(searchPhraseLower))
+            .Where(r => (searchPhraseLower == null) ||
+                        (r.Name.ToLower().Contains(searchPhraseLower)) ||
+                        (r.Description.ToLower().Contains(searchPhraseLower)))
             .ToListAsync();
 
         return restaurants;
