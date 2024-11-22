@@ -20,9 +20,9 @@ public class GetAllRestaurantsQueryValidator : AbstractValidator<GetAllRestauran
             .Must(value => allowPageSizes.Contains(value))
             .WithMessage($"Page size must be in [{string.Join(",", allowPageSizes)}]");
 
-        //RuleFor(r => r.SortBy)
-        //    .Must(value => allowedSortByColumnNames.Contains(value))
-        //    .When(q => q.SortBy != null)
-        //    .WithMessage($"Sort by is optional, or must be in [{string.Join(",", allowedSortByColumnNames)}]");
+        RuleFor(r => r.SortBy)
+            .Must(value => allowedSortByColumnNames.Contains(value))
+            .When(q => q.SortBy != null)
+            .WithMessage($"Sort by is optional, or must be in [{string.Join(",", allowedSortByColumnNames)}]");
     }
 }
