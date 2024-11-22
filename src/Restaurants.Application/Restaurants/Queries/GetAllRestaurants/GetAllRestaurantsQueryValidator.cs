@@ -6,10 +6,8 @@ namespace Restaurants.Application.Restaurants.Queries.GetAllRestaurants;
 public class GetAllRestaurantsQueryValidator : AbstractValidator<GetAllRestaurantsQuery>
 {
     private readonly int[] allowPageSizes = [5, 10, 15, 30];
-    private readonly string[] allowedSortByColumnNames = [nameof(RestaurantDto.Name),
-        nameof(RestaurantDto.Category),
-        nameof(RestaurantDto.Description)];
-
+    private readonly string[] allowedSortByColumnNames =
+        [nameof(RestaurantDto.Name), nameof(RestaurantDto.Category), nameof(RestaurantDto.Description)];
 
     public GetAllRestaurantsQueryValidator()
     {
