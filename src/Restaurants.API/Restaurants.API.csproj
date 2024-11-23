@@ -4,7 +4,7 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<UserSecretsId>148d183f-3ad0-4720-9dd0-9df637716a8e</UserSecretsId>
+		<UserSecretsId>148d183f-Restaurants.API</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
