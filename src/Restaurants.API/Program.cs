@@ -6,7 +6,6 @@ using Serilog;
 
 try
 {
-
     WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
     // Add services to the container.
