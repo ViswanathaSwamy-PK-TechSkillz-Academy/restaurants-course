@@ -10,6 +10,7 @@ internal class RestaurantSeeder(RestaurantsDbContext dbContext) : IRestaurantSee
 {
     public async Task Seed()
     {
+        // For Azure SQL Dbs
         if (dbContext.Database.GetPendingMigrations().Any())
         {
             await dbContext.Database.MigrateAsync();
