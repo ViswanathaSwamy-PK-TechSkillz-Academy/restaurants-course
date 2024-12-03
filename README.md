@@ -19,6 +19,7 @@ dotnet ef migrations add InitialCreate --context RestaurantsDbContext --project 
 dotnet ef migrations add IdentityAdded --context RestaurantsDbContext --project . --startup-project ..\Restaurants.API
 dotnet ef migrations add UserPropertiesAdded --context RestaurantsDbContext --project . --startup-project ..\Restaurants.API
 dotnet ef migrations add RestaurantOwnerAdded --context RestaurantsDbContext --project . --startup-project ..\Restaurants.API
+dotnet ef migrations add RestaurantLogoUrlAdded --context RestaurantsDbContext --project . --startup-project ..\Restaurants.API
 
 # Update database for RestaurantsDbContext
 dotnet ef database update --context RestaurantsDbContext --project . --startup-project ..\Restaurants.API
