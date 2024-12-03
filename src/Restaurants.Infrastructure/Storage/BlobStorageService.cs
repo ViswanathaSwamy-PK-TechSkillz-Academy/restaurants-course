@@ -10,9 +10,10 @@ internal class BlobStorageService(IOptions<BlobStorageSettings> blobStorageSetti
 
     private readonly BlobStorageSettings _blobStorageSettings = blobStorageSettingsOptions.Value;
 
-    public Task<string> UploadToBlobAsync(Stream data, string fileName)
+    public async Task<string> UploadToBlobAsync(Stream data, string fileName)
     {
         var blobServiceClient = new BlobServiceClient(_blobStorageSettings.ConnectionString);
+
         var containerClient = blobServiceClient.GetBlobContainerClient(_blobStorageSettings.LogosContainerName);
 
         var blobClient = containerClient.GetBlobClient(fileName);
@@ -20,6 +21,7 @@ internal class BlobStorageService(IOptions<BlobStorageSettings> blobStorageSetti
         await blobClient.UploadAsync(data);
 
         var blobUrl = blobClient.Uri.ToString();
+
         return blobUrl;
     }
 }
