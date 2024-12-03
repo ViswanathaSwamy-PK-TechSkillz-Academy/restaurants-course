@@ -26,6 +26,6 @@ internal class UploadRestaurantLogoCommandHandler(ILogger<UploadRestaurantLogoCo
         var logoUrl = await blobStorageService.UploadToBlobAsync(request.File, request.FileName);
         restaurant.LogoUrl = logoUrl;
 
-        await restaurantsRepository.SaveChanges();
+        await restaurantsRepository.SaveChangesAsync();
     }
 }
