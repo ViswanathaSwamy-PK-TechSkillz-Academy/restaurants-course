@@ -30,7 +30,7 @@ internal class BlobStorageService(IOptions<BlobStorageSettings> blobStorageSetti
     {
         if (blobUrl == null) return null;
 
-        var sasBuilder = new BlobSasBuilder()
+        BlobSasBuilder sasBuilder = new()
         {
             BlobContainerName = _blobStorageSettings.LogosContainerName,
             Resource = "b",
@@ -41,16 +41,13 @@ internal class BlobStorageService(IOptions<BlobStorageSettings> blobStorageSetti
 
         sasBuilder.SetPermissions(BlobSasPermissions.Read);
 
-        var blobServiceClient = new BlobServiceClient(_blobStorageSettings.ConnectionString);
-
+        BlobServiceClient blobServiceClient = new(_blobStorageSettings.ConnectionString);
 
         var sasToken = sasBuilder
             .ToSasQueryParameters(new Azure.Storage.StorageSharedKeyCredential(blobServiceClient.AccountName, _blobStorageSettings.AccountKey))
             .ToString();
 
         return $"{blobUrl}?{sasToken}";
-        // blob: https://restaurantssadev.blob.core.windows.net/ logos/ logo-fun.jfif
-        // sas: sp=r&st=2024-02-19T08:18:05Z&se=2024-02-19T16:18:05Z&spr=https&sv=2022-11-02&sr=b&sig=bB2hSZtqsbImIuwM7CYMTYSXMrEt5u5K6RJ1EbjrxGA%3D
     }
 
     private static string GetBlobNameFromUrl(string blobUrl)
