@@ -1,4 +1,5 @@
 ﻿using Azure.Storage.Blobs;
+using Azure.Storage.Sas;
 using Microsoft.Extensions.Options;
 using Restaurants.Domain.Interfaces;
 using Restaurants.Infrastructure.Configuration;
