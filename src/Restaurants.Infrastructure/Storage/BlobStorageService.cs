@@ -39,7 +39,6 @@ internal class BlobStorageService(IOptions<BlobStorageSettings> blobStorageSetti
             BlobName = GetBlobNameFromUrl(blobUrl)
         };
 
-
         sasBuilder.SetPermissions(BlobSasPermissions.Read);
 
         var blobServiceClient = new BlobServiceClient(_blobStorageSettings.ConnectionString);
