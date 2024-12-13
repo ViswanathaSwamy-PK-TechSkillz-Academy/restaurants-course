@@ -1,4 +1,4 @@
-namespace Restaurants.Application.Tests
+namespace Restaurants.Domain.Tests
 {
     public class UnitTest1
     {
