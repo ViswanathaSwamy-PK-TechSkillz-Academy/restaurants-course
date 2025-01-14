@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
-using Restaurants.Application.Users;
 using Restaurants.Domain.Constants;
+using Xunit;
 
-namespace Restaurants.Application.Tests.Users;
+namespace Restaurants.Application.Users.Tests;
 
 public class CurrentUserTests
 {
@@ -16,10 +16,13 @@ public class CurrentUserTests
         var currentUser = new CurrentUser("1", "test@test.com", [UserRoles.Admin, UserRoles.User], null, null);
 
         // act
+
         var isInRole = currentUser.IsInRole(roleName);
 
         // assert
+
         isInRole.Should().BeTrue();
+
     }
 
 
@@ -30,10 +33,13 @@ public class CurrentUserTests
         var currentUser = new CurrentUser("1", "test@test.com", [UserRoles.Admin, UserRoles.User], null, null);
 
         // act
+
         var isInRole = currentUser.IsInRole(UserRoles.Owner);
 
         // assert
+
         isInRole.Should().BeFalse();
+
     }
 
     [Fact()]
@@ -43,9 +49,12 @@ public class CurrentUserTests
         var currentUser = new CurrentUser("1", "test@test.com", [UserRoles.Admin, UserRoles.User], null, null);
 
         // act
+
         var isInRole = currentUser.IsInRole(UserRoles.Admin.ToLower());
 
         // assert
+
         isInRole.Should().BeFalse();
+
     }
 }
