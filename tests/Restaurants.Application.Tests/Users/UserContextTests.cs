@@ -12,9 +12,10 @@ namespace Restaurants.Application.Tests.Users
         [Fact()]
         public void GetCurrentUser_WithAuthenticatedUser_ShouldReturnCurrentUser()
         {
-            var dateOfBirth = new DateOnly(1990, 1, 1);
+            DateOnly dateOfBirth = new(1990, 1, 1);
 
-            var httpContextAccessorMock = new Mock<IHttpContextAccessor>();
+            Mock<IHttpContextAccessor>? httpContextAccessorMock = new();
+
             List<Claim> claims =
             [
                 new(ClaimTypes.NameIdentifier, "1"),
@@ -25,17 +26,16 @@ namespace Restaurants.Application.Tests.Users
                 new("DateOfBirth", dateOfBirth.ToString("yyyy-MM-dd"))
             ];
 
-            var user = new ClaimsPrincipal(new ClaimsIdentity(claims, "Test"));
+            ClaimsPrincipal user = new(new ClaimsIdentity(claims, "Test"));
 
             httpContextAccessorMock.Setup(x => x.HttpContext).Returns(new DefaultHttpContext()
             {
                 User = user
             });
 
-            var userContext = new UserContext(httpContextAccessorMock.Object);
+            UserContext userContext = new(httpContextAccessorMock.Object);
 
-            var currentUser = userContext.GetCurrentUser();
-
+            CurrentUser? currentUser = userContext.GetCurrentUser();
 
             currentUser.Should().NotBeNull();
             currentUser!.Id.Should().Be("1");
@@ -48,10 +48,10 @@ namespace Restaurants.Application.Tests.Users
         [Fact]
         public void GetCurrentUser_WithUserContextNotPresent_ThrowsInvalidOperationException()
         {
-            var httpContextAccessorMock = new Mock<IHttpContextAccessor>();
+            Mock<IHttpContextAccessor>? httpContextAccessorMock = new();
             httpContextAccessorMock.Setup(x => x.HttpContext).Returns((HttpContext)default!);
 
-            var userContext = new UserContext(httpContextAccessorMock.Object);
+            UserContext? userContext = new(httpContextAccessorMock.Object);
 
             Action action = () => userContext.GetCurrentUser();
 
