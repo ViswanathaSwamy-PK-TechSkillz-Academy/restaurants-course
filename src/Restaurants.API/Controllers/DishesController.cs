@@ -21,7 +21,7 @@ public class DishesController(IMediator mediator) : ControllerBase
     {
         command.RestaurantId = restaurantId;
 
-        var dishId = await mediator.Send(command);
+        int dishId = await mediator.Send(command);
 
         return CreatedAtAction(nameof(GetByIdForRestaurant), new { restaurantId, dishId }, null);
     }
@@ -30,7 +30,7 @@ public class DishesController(IMediator mediator) : ControllerBase
     [Authorize(Policy = PolicyNames.AtLeast20)]
     public async Task<ActionResult<IEnumerable<DishDto>>> GetAllForRestaurant([FromRoute] int restaurantId)
     {
-        var dishes = await mediator.Send(new GetDishesForRestaurantQuery(restaurantId));
+        IEnumerable<DishDto>? dishes = await mediator.Send(new GetDishesForRestaurantQuery(restaurantId));
 
         return Ok(dishes);
     }
@@ -38,7 +38,7 @@ public class DishesController(IMediator mediator) : ControllerBase
     [HttpGet("{dishId}")]
     public async Task<ActionResult<DishDto>> GetByIdForRestaurant([FromRoute] int restaurantId, [FromRoute] int dishId)
     {
-        var dish = await mediator.Send(new GetDishByIdForRestaurantQuery(restaurantId, dishId));
+        DishDto? dish = await mediator.Send(new GetDishByIdForRestaurantQuery(restaurantId, dishId));
 
         return Ok(dish);
     }
