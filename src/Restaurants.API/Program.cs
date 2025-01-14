@@ -26,8 +26,8 @@ try
         app.UseSwaggerUI();
 
         // Seeding the database
-        var scope = app.Services.CreateScope();
-        var seeder = scope.ServiceProvider.GetRequiredService<IRestaurantSeeder>();
+        IServiceScope? scope = app.Services.CreateScope();
+        IRestaurantSeeder? seeder = scope.ServiceProvider.GetRequiredService<IRestaurantSeeder>();
 
         await seeder.Seed();
     }

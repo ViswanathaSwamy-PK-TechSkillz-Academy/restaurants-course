@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Restaurants.Application.Common;
 using Restaurants.Application.Restaurants.Commands.CreateRestaurant;
 using Restaurants.Application.Restaurants.Commands.DeleteRestaurant;
 using Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
@@ -23,7 +24,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll([FromQuery] GetAllRestaurantsQuery query)
     {
-        var restaurants = await mediator.Send(query);
+        PagedResult<RestaurantDto>? restaurants = await mediator.Send(query);
 
         return Ok(restaurants);
     }
@@ -35,7 +36,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     //[Authorize(Policy = PolicyNames.HasNationality)]
     public async Task<ActionResult<RestaurantDto?>> GetById([FromRoute] int id)
     {
-        var restaurant = await mediator.Send(new GetRestaurantByIdQuery(id));
+        RestaurantDto? restaurant = await mediator.Send(new GetRestaurantByIdQuery(id));
 
         return Ok(restaurant);
     }
@@ -48,7 +49,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> CreateRestaurant([FromBody] CreateRestaurantCommand createRestaurantCommand)
     {
-        var id = await mediator.Send(createRestaurantCommand);
+        int id = await mediator.Send(createRestaurantCommand);
 
         return CreatedAtAction(nameof(GetById), new { id }, null);
     }
@@ -79,9 +80,9 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     [HttpPost("{id}/logo")]
     public async Task<IActionResult> UploadLogo([FromRoute] int id, IFormFile file)
     {
-        using var stream = file.OpenReadStream();
+        using Stream? stream = file.OpenReadStream();
 
-        var command = new UploadRestaurantLogoCommand()
+        UploadRestaurantLogoCommand command = new()
         {
             RestaurantId = id,
             FileName = $"{id}-{file.FileName}",

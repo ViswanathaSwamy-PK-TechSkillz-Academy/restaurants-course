@@ -53,13 +53,14 @@ public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : 
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = (int)statusCode;
 
+        // This is an anonymous object that will be serialized to JSON
         var response = new
         {
             statusCode = context.Response.StatusCode,
             message
         };
 
-        var jsonResponse = JsonSerializer.Serialize(response, _jsonSerializerOptions);
+        string? jsonResponse = JsonSerializer.Serialize(response, _jsonSerializerOptions);
 
         return context.Response.WriteAsync(jsonResponse);
     }

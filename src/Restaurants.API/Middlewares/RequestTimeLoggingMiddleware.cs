@@ -6,7 +6,7 @@ public class RequestTimeLoggingMiddleware(ILogger<RequestTimeLoggingMiddleware> 
 {
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
-        var stopWatch = Stopwatch.StartNew();
+        Stopwatch? stopWatch = Stopwatch.StartNew();
         await next.Invoke(context);
         stopWatch.Stop();
 
