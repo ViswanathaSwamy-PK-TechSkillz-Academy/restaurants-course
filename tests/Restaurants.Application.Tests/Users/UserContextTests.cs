@@ -35,6 +35,7 @@ namespace Restaurants.Application.Tests.Users
 
             UserContext userContext = new(httpContextAccessorMock.Object);
 
+            // act
             CurrentUser? currentUser = userContext.GetCurrentUser();
 
             currentUser.Should().NotBeNull();
@@ -53,6 +54,7 @@ namespace Restaurants.Application.Tests.Users
 
             UserContext? userContext = new(httpContextAccessorMock.Object);
 
+            // act
             Action action = () => userContext.GetCurrentUser();
 
             action.Should()

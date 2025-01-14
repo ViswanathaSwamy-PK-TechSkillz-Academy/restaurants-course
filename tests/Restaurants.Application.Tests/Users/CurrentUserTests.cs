@@ -14,6 +14,7 @@ public class CurrentUserTests
     {
         var currentUser = new CurrentUser("1", "test@test.com", [UserRoles.Admin, UserRoles.User], null, null);
 
+        // act
         var isInRole = currentUser.IsInRole(roleName);
 
         isInRole.Should().BeTrue();
@@ -24,6 +25,7 @@ public class CurrentUserTests
     {
         var currentUser = new CurrentUser("1", "test@test.com", [UserRoles.Admin, UserRoles.User], null, null);
 
+        // act
         var isInRole = currentUser.IsInRole(UserRoles.Owner);
 
         isInRole.Should().BeFalse();
@@ -34,6 +36,7 @@ public class CurrentUserTests
     {
         var currentUser = new CurrentUser("1", "test@test.com", [UserRoles.Admin, UserRoles.User], null, null);
 
+        // act
         var isInRole = currentUser.IsInRole(UserRoles.Admin.ToLower());
 
         isInRole.Should().BeFalse();
