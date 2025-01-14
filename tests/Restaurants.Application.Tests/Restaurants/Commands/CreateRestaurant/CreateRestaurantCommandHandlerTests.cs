@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Restaurants.Application.Restaurants.Commands.CreateRestaurant;
-using Restaurants.Application.Users;
 using Restaurants.Domain.Entities;
-using Restaurants.Domain.Repositories;
-using Xunit;
 
 namespace Restaurants.Application.Tests.Restaurants.Commands.CreateRestaurant;
 

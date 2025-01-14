@@ -8,7 +8,6 @@ using Restaurants.Domain.Entities;
 using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Interfaces;
 using Restaurants.Domain.Repositories;
-using Xunit;
 
 namespace Restaurants.Application.Tests.Restaurants.Commands.UpdateRestaurant;
 
