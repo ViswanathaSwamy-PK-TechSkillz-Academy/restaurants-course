@@ -2,10 +2,11 @@
 using FluentAssertions;
 using Restaurants.Application.Restaurants.Commands.CreateRestaurant;
 using Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
+using Restaurants.Application.Restaurants.Dtos;
 using Restaurants.Domain.Entities;
 using Xunit;
 
-namespace Restaurants.Application.Restaurants.Dtos.Tests;
+namespace Restaurants.Application.Tests.Restaurants.Dtos;
 
 public class RestaurantsProfileTests
 {

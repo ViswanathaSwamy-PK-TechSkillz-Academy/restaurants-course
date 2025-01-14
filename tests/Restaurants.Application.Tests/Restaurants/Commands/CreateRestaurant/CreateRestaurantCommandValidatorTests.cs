@@ -1,7 +1,8 @@
 ﻿using FluentValidation.TestHelper;
+using Restaurants.Application.Restaurants.Commands.CreateRestaurant;
 using Xunit;
 
-namespace Restaurants.Application.Restaurants.Commands.CreateRestaurant.Tests;
+namespace Restaurants.Application.Tests.Restaurants.Commands.CreateRestaurant;
 
 public class CreateRestaurantCommandValidatorTests
 {
